@@ -25,3 +25,9 @@
 
 > 1.数据源：因为使用的方法为，强行分割，可能数据源格式，被开发者修改，可能导致后端不能正常处理数据，导致报错(需要不断更新获取数据方式)。  
 2.图片数据：原网页上的图片由原本的图片式加载方式，已转变为canvas加载方式，可能是接口未删除，目前可以在页面中获取图片数据。
+
+<h3 align="center">项目效果</h3>
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/Mr-huangyh/GetEpidemicDataOfWuhan/master/README_IMG/1.png">
+</div>
