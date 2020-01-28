@@ -12,6 +12,6 @@
 ## 使用方法
 
 > git clone https://github.com/Mr-huangyh/GetEpidemicDataOfWuhan.git
-npm install axios
-npm install express
-node app.js
+> npm install axios
+> npm install express
+> node app.js
