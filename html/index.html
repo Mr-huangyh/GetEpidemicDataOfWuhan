@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+            width:100%;
+            margin:auto;
+        }
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="" alt="加载中..." id="img1">
+    <img src="" alt="加载中..." id="img2">
+    <table id="table" style="margin: auto;" border="1">
+        <tr>
+            <th>地区</th>
+            <th>疑似</th>
+            <th>确诊</th>
+            <th>死亡</th>
+            <th>治愈</th>
+        </tr>
+    </table>
+    <script>
+        window.onload = function () {
+            loadImg();
+            loadAreaStat();
+        }
+        function loadImg() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let jdata = JSON.parse(xmlhttp.responseText);
+                    document.getElementById("img1").src = jdata.imgUrl;
+                    document.getElementById("img2").src = jdata.dailyPic;
+                }
+            }
+            xmlhttp.open("GET", "/getImg", true);
+            xmlhttp.send();
+        }
+        function loadAreaStat() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    let jdata = JSON.parse(xmlhttp.responseText);
+                    jdata.forEach(element => {
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = "<td>" + element.provinceName + "</td><td>" + element.suspectedCount + "</td><td>" + element.confirmedCount + "</td><td>" + element.deadCount + "</td><td>" + element.curedCount + "</td>";
+                        document.getElementById('table').appendChild(tr);
+                    });
+                }
+            }
+            xmlhttp.open("GET", "/getAreaStat", true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+
+</html>
