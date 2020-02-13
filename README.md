@@ -4,6 +4,12 @@
 
 > 本项目只做个人学习研究之用，不得做其他用途，如做其他用和本人无关。
 
+## 分支
+
+1. SZ-Map [切换分支](https://github.com/Mr-huangyh/GetEpidemicDataOfWuhan/tree/SZ-Map "SZ-Map")  
+深圳疫情历史数据 (各行政区域确诊人数) 回顾  
+
+
 ## 数据来源
 
 > 丁香医生 https://3g.dxy.cn/newh5/view/pneumonia
