@@ -15,19 +15,19 @@
 
         img {
             display: block;
-            width:100%;
-            margin:auto;
+            width: 100%;
+            margin: auto;
         }
-        *{
+
+        * {
             text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <img src="" alt="加载中..." id="img1">
-    <img src="" alt="加载中..." id="img2">
-    <table id="table" style="margin: auto;" border="1">
+    <div id="imgBox"></div>
+    <table id="table" style="margin: auto;width: 100%;" border="1">
         <tr>
             <th>地区</th>
             <th>疑似</th>
@@ -52,8 +52,25 @@
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     let jdata = JSON.parse(xmlhttp.responseText);
-                    document.getElementById("img1").src = jdata.imgUrl;
-                    document.getElementById("img2").src = jdata.dailyPic;
+                    // document.getElementById("img1").src = jdata.imgUrl;
+                    // document.getElementById("img2").src = jdata.dailyPic;
+                    pushImgIn(jdata.imgUrl);
+                    pushImgIn(jdata.dailyPic);
+                }
+            }
+            let pushImgIn = (data) => {
+                let imgBox = document.querySelector('#imgBox');
+                if (data.indexOf(',') != -1) {
+                    data = data.split(',');
+                    for (let i of data) {
+                        let img = document.createElement('img');
+                        img.src = i;
+                        imgBox.appendChild(img);
+                    }
+                } else {
+                    let img = document.createElement('img');
+                    img.src = data;
+                    imgBox.appendChild(img);
                 }
             }
             xmlhttp.open("GET", "/getImg", true);
