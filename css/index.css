@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    transition: .35s;
+    font-family:"微软雅黑";
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+.bar {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#moreShowData {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+.author {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.5em;
+    color: rgb(136, 136, 136, 0.5);
+    font-weight: bold;
+}
+
+.author a {
+    color: rgb(136, 136, 136, 0.5);
+    text-decoration: none;
+}
+
+.author a:hover {
+    color: #000;
+}
+
+@media screen and (max-device-width:960px) {
+    #moreShowData {
+        font-size: 0.7rem;
+    }
+}

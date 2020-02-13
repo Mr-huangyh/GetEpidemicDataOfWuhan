@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<!-- 地图数据来源 : http://datav.aliyun.com/tools/atlas/ -->
+<!-- 地图数据来源 : https://lbs.amap.com/api/javascript-api/example/district-search/draw-district-boundaries -->
+<head>
+    <meta charset="UTF-8">
+    <title>ShenZhen map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- echartsJs module -->
+    <script src="./js/echarts.js"></script>
+    <script src="./js/sz.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- myChart 显示Box -->
+    <div id="main"></div>
+    <!-- 日期进度条 -->
+    <div class="bar">
+        <p id="showDate"></p>
+        <input type="range" min="0" max="5" step="1" value="0" />
+    </div>
+    <!-- 具体数据 -->
+    <div id="moreShowData"></div>
+    <!-- 作者 echarts -->
+    <div class="author"></div>
+    <!-- mainJS -->
+    <script src="./js/deData.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
