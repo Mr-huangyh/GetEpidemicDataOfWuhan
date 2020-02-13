@@ -14,6 +14,9 @@
 
 > 丁香医生 https://3g.dxy.cn/newh5/view/pneumonia
 
+- 如果只是想获取数据查看这个 `API` : https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5
+- 上述 `API` 从[@阿泰](https://github.com/icomgx/pneumonia)大佬的代码中获得
+
 ## 使用方法
 
 > \# git clone https://github.com/Mr-huangyh/GetEpidemicDataOfWuhan.git  
