@@ -66,8 +66,8 @@
     });
     myChart.showLoading();
     //切换数据 调用方法 fn(arr) arr:源数组
-    let getToAnotherData = (data) => {
-        showData(data.data);
+    let getToAnotherData = (data, data2 = { data: 1 }) => {
+        showData(data.data, data2.data);
         dateflag = showDate.innerHTML = data.date.replace('^', ' ');
         myChart.setOption({
             series: [{
@@ -75,10 +75,21 @@
             }]
         });
     }
-    let showData = (arr) => {
-        let text = '', moreShowData = document.querySelector('#moreShowData');;
-        for (let i of arr) {
-            text += i.name + ':' + i.value + '\n';
+    let showData = (arr, arr2) => {
+        let text = '', moreShowData = document.querySelector('#moreShowData');
+        if (arr2 == 1) {
+            for (let i of arr) {
+                console.log()
+                text += i.name + ':' + i.value + '\n';
+            }
+        } else {
+            for (let i of arr) {
+                for (let j of arr2) {
+                    if (i.name == j.name) {
+                        text += i.name + ':' + i.value + ((i.value * 1 - j.value * 1) > 0 ? ' ↑' + (i.value * 1 - j.value * 1) : ((i.value * 1 - j.value * 1) < 0 ? ' ↓' + -1 * (i.value * 1 - j.value * 1) : '')) + '\n';
+                    }
+                }
+            }
         }
         moreShowData.innerText = text;
     }
@@ -87,17 +98,17 @@
         showDate = document.querySelector('#showDate');
     range.onmousemove = (e) => {//电脑端
         dataflag = e.target.value;
-        getToAnotherData(allData[e.target.value]);
+        getToAnotherData(allData[e.target.value], allData[e.target.value * 1 + 1]);
     }
     range.ontouchmove = (e) => {//手机端
         dataflag = e.target.value;
-        getToAnotherData(allData[e.target.value]);
+        getToAnotherData(allData[e.target.value], allData[e.target.value * 1 + 1]);
     }
     //首次获取数据
     let getFirstData = () => {//w3cSchool code
         allData = deData(testJson.data).arr;
         range.setAttribute('max', allData.length - 1);
-        getToAnotherData(allData[0]);
+        getToAnotherData(allData[0],allData[1]);
         myChart.hideLoading();
     }
     let showAuthor = () => {
